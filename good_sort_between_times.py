@@ -15,7 +15,7 @@ sort by time is working!  leave no spaces in the 'between' field.  seems to be n
 so add the create index:
 # declare the index
 c.execute("CREATE INDEX IF NOT EXISTS index_time_table_one ON table_one(time_column)")
-no problem adding this to the database!  Thanks to that guy on stckexchange.
+no problem adding this to the database!  Thanks to that guy on stackexchange.
 let me look at organization.  why don't I move this into another area and then keep using this 
 for my development
 """

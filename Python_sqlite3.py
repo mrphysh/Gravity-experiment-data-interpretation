@@ -9,7 +9,7 @@ my notes say
 column_two      average 1816988  stdev 192
 column_three    average 1829091  stdev 288
 column_four    average  1820694  stdev 147
-The numbers are close, by me design.  I wanted them to be close so that they would be easy 
+The numbers are close, by my design.  I wanted them to be close so that they would be easy 
 to visaulize with graphs.  But they are incredibly precise and the Python has no problems sorting
 them into their fields.
 I fuss with the windows a bit, but mostly they are fine.
@@ -123,5 +123,10 @@ while (1==1):
     i=0         
 
 """   
-   This is collecting one of 19, but this is an average.
+   This is collecting one of 19.  19 was picked as a prime number and this results in a quite consistent pattern from the 
+   three data sources.  If I was using sn SD card, I would just take everything, I think.  
+   60/1.83 is about 32 per minute and that is per pendulum.  so times three is about 98 numbers per minute total.  this divided
+   by 19 is about 5 stored values a minute total or 300 numbers an hour.  
+   So the data base picks up about 100 numbers per pendulum per hour.  It is hard to imagine variations that 
+   would not be seen at this magnification.  But I wonder about it?!
  """

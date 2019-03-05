@@ -9,7 +9,7 @@ These parts are done:
 
 The Arduino (C++) is done.  It a fairly interesting sketch.  One sketch operates three pendulums.  The compiler flies by and trips these triggers for the timing.  With no ‘if’ statements is is able to operate all three.
 
-The C++ passes the numbers out to the serial monitor and they are caught by the Python.  The numbers fall into three categories based upon size.  The numbers are on the order of 1.876588.  So that is 1.8 million.  (this is all about time;  1.8 million seconds) The Python sorts the values into the three sizes with ‘if’ statements and inserts them into a sqlite3 database.  They are put in the appropriate column, adding a datetime.datetime time stamp.   This is all done.  
+The C++ passes the numbers out to the serial monitor and they are caught by the Python.  The numbers fall into three categories based upon size.  The numbers are on the order of 1.876588.  So that is 1.8 million.  (this is all about time;  1.8 millionths of a seconds) The Python sorts the values into the three sizes with ‘if’ statements and inserts them into a sqlite3 database.  They are put in the appropriate column, adding a datetime.datetime time stamp.   This is all done.  
 
 There is an example sqlite3 database.  
 Database      dec3_database     

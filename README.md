@@ -1,39 +1,44 @@
-# sqlite3-and-statistical-analysis
+README FOR ARDUINO, C++, PYTHON, SQLITE3 DATA CAPTURE
+Generic README for all three repositories.
 
-Many Arduino projects automatically generate massive amounts of data.  The Arduino (C++) nicely feeds into Python and the Python nicely feeds into sqlite3.   This project is all about “now what?”  How can we make meaning from all this data?
-
-As an Example:  There is an sqlite3 database.  It has 6 columns;  a datetime.datetime stamp;  data in column_two, data in column_three, data in column_four and comments  in column_five.  There are presently   500,000 rows of data and about 7,000 are added every day.   The project is to make sense of this large set of data.
-If this has never been done, then it represents a significant development project.  I feel slight encouragement that this application is not all that unusual.   Imagine an automatic weather station.  How about an automated sensor that counts cars through an intersection, or customers going into a movie theater.  Or a careful monitor of a HVAC system in a commercial building.  Or an automated monitor on a industrial system that makes widgets.  The personal theme is that I need help!
-
-These parts are done:
-
-The Arduino (C++) is done.  It a fairly interesting sketch.  One sketch operates three pendulums.  The compiler flies by and trips these triggers for the timing.  With no ‘if’ statements is is able to operate all three.
-
-The C++ passes the numbers out to the serial monitor and they are caught by the Python.  The numbers fall into three categories based upon size.  The numbers are on the order of 1.876588.   (this is all about time;  1876588 millionths of a seconds or about 1.8 seconds) The Python sorts the values into the three sizes with ‘if’ statements and inserts them into a sqlite3 database.  They are put in the appropriate column, adding a datetime.datetime time stamp.   This is all done.  
-
-There is an example sqlite3 database.  
-Database      dec3_database     
-				tables
-					first_table                168000 lines
-					dec26_table_cont        341 lines
-					dec26_table                      9 lines
-
-I use this database for development and use table   [dec26_table_cont]  .  I made it for that purpose, although it does contain real data. 
-
-Take a look at the code.  The comments are included within the program and are fairly extensive.  Look at the database (ignore the [first_table]   ….   too big)
-
-I have been actively and aggressively looking at Python, specifically at the Python/sqlite3 interface and have made progress.  I made a big break this morning.  I added an index, or rather modified the first column to include an index.  I did this through the sqlite3 command line.  
-
-sqlite> CREATE INDEX IF NOT EXISTS index_time_table_one ON dec26_table_cont( column_one);
-
-Then this worked:
+Two of the fundamental constants in physical science are gravity and mass.  My academic qualifications to approach this question are not strong, but I have the diverse background, creativity and curiosity to ask this question:  are they really constant?  I think of myself as the creative lab tech that came up with the question and the path toward an answer, but realize that my limits stop me at that point.   These experiments may indicate that gravity and mass are not constant.  If this is indicated (I hesitate to use the word ‘proven’) then I need to pass it all to another team.
  
-c.execute ("SELECT * FROM dec26_table_cont WHERE column_one BETWEEN '2018-12-26 21:48:13.377000' and '2018-12-26 21:53:13.363000' ")
+Gravity is assumed to be a constant.   The experiment is fairly straightforward:  look carefully at the period of a pendulum.  If there are variations in the period, then this indicates that gravity is not constant.  (Everything else is constant)
+The power of this primitive experiment is the “micros()” function in C++.  The micros() function returns the number of microseconds from the time, the Arduino board begins running the current program. This number overflows i.e. goes back to zero after approximately 70 minutes
+The anniversary clock is the one that is always found in a glass dome, about 14 inches high.  There is a shiny brass thing with four balls that rotates back and forth.  The period of the rotation is determined by a complex set of variables, but at the center of this is the mass.  This experiment proposes that variations in the period indicate that mass is not constant.  Let’s hold all variables constant.   For example, during the months of January and February, the period goes down, that is; the rotor speeds up,    This indicates that the mass of the rotating object has gone down.  This is complicated, but mass is at the center.
+This is all about the reproducibility of the data.  The specifics of the period are not of interest.
 
-I had been struggling with this even for weeks.  (thank you Stack Exchange)
+I originally joined GitHub to invite, even ask for help.  I thought that there was a general need for this software development and still believe this.  But I did not understand how the platform was to be used and, in any event, never attracted any attention.  
 
-I have just recently started with pandas and it looks promising.
+I developed it all myself and have looked at the data and found data that needs another set of eyes, that is, a peer review, as it is called in academic circles.  This GitHub account is changed to present the software with this project.   This project is largely software development.   I think this is fair.   It is divided into three repositories:  
+Arduino, C++ , Python, sqlite3  data capture for gravity and mass experiment.
+xxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxxxxxx
 
-The code, scripts, sketches are interesting and not that difficult.  (If I can understand them, anyone can)
-Take a look. 
+The Arduino microcontroller is a small, inexpensive computer that makes it easy for any computer to interact with the outside world.  It accepts input from sensors, sends output to motors, solenoids, lights etc.   I write a little program in C++ and put it in the little computer (Arduino Uno) and the program accepts input creates output and sends out data.  I have little understanding of it, but it is not difficult to do cool thigs with it.
+
+The signals come in through a Hall detector.  There is a magnet on the pendulum.  At the end of its swing the magnet trips the Hall.  Two signals result in a time interval which it then sends  out and to a computer through the computer’s serial port.  
+
+In the computer the signal is caught by Python.  The data is from clocks, is precise and accurate.  The Python sorts the numbers by size, adds a UNIX time stamp and puts it in a table in a sqlite3 database.
+
+There was an enormous amount of development behind both the C++ and the Python, but in the end neither is tremendously complex.
+
+The data streams are through essentially clocks which are both accurate and precise.  The Python simply separates them by size with ‘if’ statements.    Some of the fields threatened to overlap with others and I added 30 million and 20 million to two of the data streams respectively.  These were added unambiguously at the input.  With these, the Python was able to absolutely separate them.
+
+This repository shows this software.  The languages are C++ and Python and the database is sqlite3.  
+Quickly, the columns are
+Column_one     	UNIX timestamp
+Column_two	data stream
+Colum_three	data stream
+Column_four	data stream. Etc
+Column_last	error…exceptions
+The bulk of the databases have eight columns.  Timestamp,  six data and one exception
+
+Arduino  C++  and Python
+The Arduino code is pretty typical logic statements:  If  var == high and old_var ==low then    etc etc.
+There are two experiments under the same platform.  The Hall is at the end of the swing of the pendulum.  With the rotating pendulums the Hall is placed in the middle.  That is, every other high to low is the trigger.  This required an extra set of Boolean variables.  It took me weeks to figure this out.  So, there are two different sets of logic gates.  It uses only the serial library.
+The interval of the actual Hall signal (how long is the signal high) does not impact the data.
+The Python mostly can cleanly separate them but there were some problems.  I added 20 and 30 million to respective inputs, such that the Python could more definitely separate them and then subtracted it before adding to the database.  The Python uses these libraries: serial  sqlite3 datetime OS.
+This repository includes copies of these programs.
+
+https://youtu.be/PH7FHUDZ4PM
 

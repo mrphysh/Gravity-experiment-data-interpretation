@@ -5,12 +5,18 @@ import os                                # this allows the python script name to
 import sys                               # not sure about this one
 python_script = sys.argv[0]             ## this goes into the database
 print ("script name   ", python_script)
-#
-##
+"""
+I a chemist and taught this to myself.  This thellsyou that it may not be as complicated as a program created by a team of professionals
+The platform is veru powerful, but awkward.  Modifications must be made within the code.
+How many rws are sampled "search_number"  I leave it at 5000
+The raw data database must be added manually.  And the name must be added into another field to put the name into the database.
+The start date of the raw file must be entered manually.  If this is overlooked, weird stuff can occur.  For big summaries, the database must be entered into two fields,
+the start date must be entered and that is all.  This will pile the summary data into one table in one database.  If done carefully and with luck, 
+the table will show nice summaries in chronological order.  I have set up a practice table and used that to make sure that everything is fine, then moved to the final summary.
+
+
+"""
 data_source_database =  "example_database_nov28_2021"
-##
-#       
-##
 
 conn = sqlite3.connect(data_source_database)
 c = conn.cursor()
@@ -30,7 +36,7 @@ def dynamic_data_entry_averages():
               ( date_var,  one_average,  two_average, three_average,  python_script,   one_count,   two_count, three_count,   data_source_database,  search_number  ) )
     bonn.commit()
 ##
-##    
+    
 date_var = '2021-11-28 22:00:00'#  This must be manually entered.  The start date is part of the name of the database.
 #                          o
 search_number =  5000

@@ -6,14 +6,24 @@ import sys                               # not sure about this one
 python_script = sys.argv[0]             ## this goes into the database
 print ("script name   ", python_script)
 """
-I a chemist and taught this to myself.  This thellsyou that it may not be as complicated as a program created by a team of professionals
+I a chemist and taught this to myself.  This tells you that it may not be as complicated as a program created by a team of professionals
 The platform is veru powerful, but awkward.  Modifications must be made within the code.
-How many rws are sampled "search_number"  I leave it at 5000
-The raw data database must be added manually.  And the name must be added into another field to put the name into the database.
-The start date of the raw file must be entered manually.  If this is overlooked, weird stuff can occur.  For big summaries, the database must be entered into two fields,
-the start date must be entered and that is all.  This will pile the summary data into one table in one database.  If done carefully and with luck, 
-the table will show nice summaries in chronological order.  I have set up a practice table and used that to make sure that everything is fine, then moved to the final summary.
+How many rows are sampled "search_number"  I leave it at 5000
+The raw data database must be added manually, database by database.  
+And the name fo the database must be added into another field to allow the placement of the name in the report.
 
+The start date of the raw file must be entered manually. <date_var> (the start date is in the name of the database) 
+If this is overlooked, weird stuff can occur.  For big summaries with database after database, the database must be entered into two fields,
+the start date must be entered and that is all.  This will put the summary data into one table in one database.  If done carefully and with luck, 
+the table will show nice summaries in chronological order.  
+I have set up a practice table and used that to make sure that everything is fine, then moved to the final summary.
+If I am looking for weird patterns, it is easy.  The data all seems to have weird ptterns.
+
+The raw data has six data columns.  Every row has the UNIX time and one of the six numbers.  Three of the columns are gravity  (pendulums) and three are
+mass (rotating pendulums).  Summaries are separated into columns two, five and seven  for mass.  And then three four and six for gravity.  I try to remember to change the 
+table column names to reflect this.
+
+(Column_one is the UNIX time and column_eight is error)
 
 """
 data_source_database =  "example_database_nov28_2021"

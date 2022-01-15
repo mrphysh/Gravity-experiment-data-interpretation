@@ -38,7 +38,8 @@ The Arduino code is pretty typical logic statements:  If  var == high and old_va
 There are two experiments under the same platform.  The Hall is at the end of the swing of the pendulum.  With the rotating pendulums the Hall is placed in the middle.  That is, every other high to low is the trigger.  This required an extra set of Boolean variables.  It took me weeks to figure this out.  So, there are two different sets of logic gates.  It uses only the serial library.
 The interval of the actual Hall signal (how long is the signal high) does not impact the data.
 The Python mostly can cleanly separate them but there were some problems.  I added 20 and 30 million to respective inputs, such that the Python could more definitely separate them and then subtracted it before adding to the database.  The Python uses these libraries: serial  sqlite3 datetime OS.
-This repository includes copies of these programs.
+This repository includes copies of these programs.start
 
-https://youtu.be/PH7FHUDZ4PM
+https://youtu.be/PH7FHUDZ4PM and https://youtu.be/5dWK-NFF1Iw
+
 
